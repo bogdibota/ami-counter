@@ -1,0 +1,89 @@
+body {
+  overflow: hidden;
+  font-family: sans-serif;
+  background-color: black;
+}
+
+#bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url("/night_sky_big.jpg");
+  background-position: center 0;
+  background-repeat: no-repeat;
+  background-size: auto 100vh;
+}
+
+#counter {
+  opacity: 0.5;
+  text-align: center;
+  color: white;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 20vh;
+  font-weight: bold;
+  font-size: 3rem;
+}
+
+.star {
+  position: absolute;
+  background-color: white;
+  width: 1em;
+  height: 1em;
+  animation: pulse 0.7s cubic-bezier(0.7, 0, 0.3, 1) 1 both;
+  border-radius: 50%;
+  box-shadow: 0.5em 0.5em 1em 0.4em white, -0.5em -0.5em 1em 0.4em white,
+    -0.5em 0.5em 1em 0.4em white, 0.5em -0.5em 1em 0.4em white;
+}
+
+.falling-star {
+  position: absolute;
+  overflow: hidden;
+}
+
+.falling-star > .star {
+  animation: pulse 0.7s cubic-bezier(0.7, 0, 0.3, 1) 1 both,
+    fall 0.7s cubic-bezier(0.7, 0, 0.3, 1) 1 both;
+}
+
+.falling-star.rtl > .star {
+  animation: pulse 0.7s cubic-bezier(0.7, 0, 0.3, 1) 1 both,
+    fall-rtl 0.7s cubic-bezier(0.7, 0, 0.3, 1) 1 both;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0) rotate(0);
+  }
+  50% {
+    transform: scale(0.2) rotate(360deg);
+  }
+  100% {
+    transform: scale(0) rotate(0deg);
+  }
+}
+
+@keyframes fall {
+  from {
+    left: 0;
+    top: 0;
+  }
+  to {
+    left: 100%;
+    top: 100%;
+  }
+}
+
+@keyframes fall-rtl {
+  from {
+    left: 100%;
+    top: 0;
+  }
+  to {
+    left: 0;
+    top: 100%;
+  }
+}
